@@ -29,7 +29,7 @@ export class PatientRecordDetailsPageComponent implements OnInit {
   delete() {
     this.clinicService.deletePatientRecord(this.patientRecord.id).subscribe(res => {
       this.router.navigate(['/clinic/patient-profile-list', this.patientRecord.patientProfile.id])
-      this.toastrService.success("successfully created!", "Success");
+      this.toastrService.success("successfully deleted!", "Success");
     }, error => {
       this.toastrService.error(error.error.message, error.error.description);
     });

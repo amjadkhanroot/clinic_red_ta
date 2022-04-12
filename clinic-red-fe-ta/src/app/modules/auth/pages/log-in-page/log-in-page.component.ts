@@ -70,7 +70,7 @@ export class LogInPageComponent {
             }
           }
         }, errors => {
-          this.utilsService.showToastr(errors?.error?.message, JSON.stringify(errors?.error?.data), 'error', );
+          this.utilsService.showToastr(errors?.error?.message, JSON.stringify(errors?.error), 'error');
         });
     }
   }

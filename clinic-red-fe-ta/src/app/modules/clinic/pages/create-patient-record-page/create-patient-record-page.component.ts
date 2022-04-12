@@ -74,14 +74,14 @@ export class CreatePatientRecordPageComponent implements OnInit {
     if (this.patientRecordFrom.valid){
       if (!this.isEdit){
         this.clinicService.createPatientRecord(this.patientRecordFrom.value).subscribe(res => {
-          this.router.navigate(['/clinic/patient-profile-list', this.patientProfile.id])
+          this.router.navigate(['/clinic/patient-profile-list'])
           this.toastrService.success("successfully created!", "Success");
         }, error => {
           this.toastrService.error(error?.error.message, error?.error.description);
         });
       }else{
         this.clinicService.updatePatientRecord(this.patientRecord.id, this.patientRecordFrom.value).subscribe(res => {
-          this.router.navigate(['/clinic/patient-profile-list', this.patientProfile.id])
+          this.router.navigate(['/clinic/patient-profile-list'])
           this.toastrService.success("successfully updated!", "Success");
         }, error => {
           this.toastrService.error(error?.error.message, error?.error.description);
