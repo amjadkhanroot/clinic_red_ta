@@ -1,0 +1,55 @@
+<div class='PPP--form-container'>
+  <p>
+    <button class='' mat-raised-button color='primary'
+            (click)='update()'>{{ "update patient record" | uppercase}}</button>
+  </p>
+  <p>
+    <button class='' mat-raised-button color='primary'
+            (click)='delete()'>{{ "delete patient record" | uppercase}}</button>
+  </p>
+  <p class='PPP--form__header-title'>Patient Record</p>
+  <div class='example-container'>
+    <div>
+      <strong>Reference No.:  </strong> <span>{{patientRecord.refCode}}</span>
+    </div>
+    <div>
+      <strong>ActionToken:  </strong> <span>{{patientRecord.actionToken}}</span>
+    </div>
+    <div>
+      <strong>Complaints:  </strong> <span>{{patientRecord.complaints}}</span>
+    </div>
+    <div>
+      <strong>Blood Pressure:  </strong> <span>{{patientRecord.bloodPressure}}</span>
+    </div>
+    <div>
+      <strong>Diagnosis:  </strong> <span>{{patientRecord.diagnosis}}</span>
+    </div>
+    <div>
+      <strong>Comment:  </strong> <span>{{patientRecord.comment}}</span>
+    </div>
+    <div>
+      <strong>Description:  </strong> <span>{{patientRecord.description}}</span>
+    </div>
+    <div>
+      <strong>Height:  </strong> <span>{{patientRecord.height}}</span>
+    </div>
+    <div>
+      <strong>Recommendation:  </strong> <span>{{patientRecord.recommendation}}</span>
+    </div>
+    <div>
+      <strong>Sugar:  </strong> <span>{{patientRecord.sugar}}</span>
+    </div>
+    <div>
+      <strong>Temperature:  </strong> <span>{{patientRecord.temperature}}</span>
+    </div>
+    <div>
+      <strong>Weight:  </strong> <span>{{patientRecord.weight}}</span>
+    </div>
+    <div>
+      <strong>Created By (Email):  </strong> <span>{{patientRecord.createdBy.email}}</span>
+    </div>
+    <div>
+      <strong>Created At:  </strong> <span>{{patientRecord.createdAt}}</span>
+    </div>
+  </div>
+</div>

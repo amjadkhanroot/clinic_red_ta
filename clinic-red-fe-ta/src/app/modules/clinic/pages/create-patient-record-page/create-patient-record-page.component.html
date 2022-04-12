@@ -1,0 +1,71 @@
+<div class='CPR--form-container'>
+  <p *ngIf="!isEdit" class='CPR--form__header-title'>Create Patient Record</p>
+  <p *ngIf="isEdit" class='CPR--form__header-title'>Update Patient Record</p>
+  <form class='example-container' [formGroup]='patientRecordFrom'>
+    <mat-form-field *ngIf="!isEdit" appearance="outline">
+      <mat-label>Weight (KG)</mat-label>
+      <input formControlName='weight' matInput placeholder='70.5'>
+      <mat-hint>Must be number only!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!isEdit" appearance='outline'>
+      <mat-label>Height (CM)</mat-label>
+      <input formControlName='height' matInput placeholder='165.3'>
+      <mat-hint>Must be number only!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!isEdit" appearance='outline'>
+      <mat-label>Height (CM)</mat-label>
+      <input formControlName='temperature' matInput placeholder='165.3'>
+      <mat-hint>Must be number only!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!isEdit" appearance='outline'>
+      <mat-label>BloodPressure (mmHg)</mat-label>
+      <input formControlName='bloodPressure' matInput placeholder='120/80'>
+      <mat-hint>Must be number only!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field *ngIf="!isEdit" appearance='outline'>
+      <mat-label>Sugar (mg/dL)</mat-label>
+      <input formControlName='sugar' matInput placeholder='140'>
+      <mat-hint>Must be number only!</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Complaints</mat-label>
+      <textarea matInput formControlName='complaints' placeholder="Ex. he/she Complaining of? ..."></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Action Token</mat-label>
+      <textarea matInput formControlName='actionToken' placeholder="Ex. action you will take?..."></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName='description' placeholder="Ex. what happened in details?"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Diagnosis</mat-label>
+      <textarea matInput formControlName='diagnosis' placeholder="Ex. what is your conclusion?..."></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Recommendation</mat-label>
+      <textarea matInput formControlName='recommendation' placeholder="Ex. any recommendation?..."></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Leave a comment</mat-label>
+      <textarea matInput formControlName='comment' placeholder="Ex. today was better than..."></textarea>
+    </mat-form-field>
+
+    <p>
+      <button class='CPR--form__submit-button' mat-raised-button color='primary'
+              (click)='submit()'>{{ !isEdit ? "create":"update" | uppercase}}</button>
+    </p>
+  </form>
+</div>
+

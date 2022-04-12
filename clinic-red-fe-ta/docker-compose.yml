@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  clinicapp:
+    build: .
+    ports:
+      - "42002:80"
+    restart: on-failure
+    networks:
+      - clinic_network
+
+networks:
+  clinic_network:
+    driver: bridge

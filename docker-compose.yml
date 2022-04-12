@@ -1,0 +1,58 @@
+version: "3.8"
+services:
+  mysqldb:
+    image: mysql:8.0.28-oracle
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQLDB_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQLDB_DATABASE
+    ports:
+      - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
+    volumes:
+      - clinicdb:/var/lib/mysql
+    networks:
+      - clinic_network
+
+  clinicapi:
+    depends_on:
+      - mysqldb
+    build: .
+    restart: on-failure
+    env_file: ./.env
+    ports:
+      - $SPRING_LOCAL_PORT:$SPRING_DOCKER_PORT
+    environment:
+      SPRING_APPLICATION_JSON: '{
+            "spring.datasource.url"  : "jdbc:mysql://mysqldb:$MYSQLDB_DOCKER_PORT/$MYSQLDB_DATABASE?useSSL=false&allowPublicKeyRetrieval=true",
+            "spring.datasource.username" : "$MYSQLDB_USER",
+            "spring.datasource.password" : "$MYSQLDB_ROOT_PASSWORD",
+            "spring.jpa.database-platform" : "org.hibernate.dialect.MySQL5InnoDBDialect",
+            "spring.jpa.hibernate.ddl-auto" : "create-drop",
+            "spring.jpa.database":"MySQL"
+          }'
+    volumes:
+      - .m2:/root/.m2
+    networks:
+      - clinic_network
+    stdin_open: true
+    tty: true
+
+  clinicapp:
+    links:
+      - clinicapi
+    depends_on:
+      - clinicapi
+    build: ./clinic-red-fe-ta
+    ports:
+      - "42002:80"
+    restart: on-failure
+    networks:
+      - clinic_network
+
+networks:
+  clinic_network:
+    driver: bridge
+
+volumes:
+  clinicdb:

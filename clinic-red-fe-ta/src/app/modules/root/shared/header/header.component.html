@@ -1,0 +1,21 @@
+<header>
+  <nav>
+    <div fxFlex fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+      <div fxFlex="40">
+        <a mat-raised-button *ngIf='isLoggedIn && role()' [routerLink]="'clinic/patient-profile-list'" >My Patient Profiles</a>
+        <a mat-raised-button *ngIf='isLoggedIn && !role()' [routerLink]="'clinic/patient-details'" >My Profile</a>
+      </div>
+      <div fxFlex class="text--right">
+        <a mat-raised-button *ngIf='!isLoggedIn' [routerLink]="routesConfig.authRoutes.routes.register" >
+          Sign Up
+        </a>
+        <a mat-raised-button *ngIf='!isLoggedIn' [routerLink]="routesConfig.authRoutes.routes.login" >
+          Log In
+        </a>
+        <a mat-raised-button *ngIf='isLoggedIn' (click)='logOut()'>
+          Log out
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>

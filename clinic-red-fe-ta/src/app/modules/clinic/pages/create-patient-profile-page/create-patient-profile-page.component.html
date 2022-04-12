@@ -1,0 +1,52 @@
+<div class='CPP--form-container'>
+        <p *ngIf="!isEdit" class='CPP--form__header-title'>Create Patient Profile</p>
+        <p *ngIf="isEdit" class='CPP--form__header-title'>Update Patient Profile</p>
+        <form class='example-container' [formGroup]='patientProfileFrom'>
+          <mat-form-field *ngIf="!isEdit" appearance="fill">
+            <mat-label>Select Patient</mat-label>
+            <mat-select formControlName="patient">
+              <mat-option *ngFor="let patient of patientList"  [value]="patient.id">
+                {{patient.username}} | {{patient.email}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <p>
+            <mat-form-field *ngIf="!isEdit" appearance='outline'>
+              <mat-label>Full Name</mat-label>
+              <input formControlName='fullName' matInput placeholder='amjad khan'>
+              <mat-hint>Must be letters only!</mat-hint>
+            </mat-form-field>
+          </p>
+
+          <mat-form-field *ngIf="!isEdit" appearance="fill">
+            <mat-label>Select Gender</mat-label>
+            <mat-select formControlName="gender" >
+              <mat-option [value]="'MALE'">
+                Male
+              </mat-option>
+              <mat-option  [value]="'FEMALE'">
+                Female
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field *ngIf="!isEdit" appearance="fill">
+            <mat-label>Choose a Date of Birth</mat-label>
+            <input matInput type="date" formControlName="dateOfBirth">
+          </mat-form-field>
+
+          <section>
+            <mat-checkbox formControlName="smoking" class="">Smoking</mat-checkbox>
+            <mat-checkbox formControlName="diabetes" class="">Diabetes</mat-checkbox>
+          </section>
+
+
+
+          <p>
+            <button class='CPP--form__submit-button' mat-raised-button color='primary'
+                    (click)='submit()'>{{ !isEdit ? "create":"update" | uppercase}}</button>
+          </p>
+        </form>
+      </div>
+

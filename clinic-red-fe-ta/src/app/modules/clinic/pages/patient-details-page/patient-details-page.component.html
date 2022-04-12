@@ -1,0 +1,108 @@
+<div *ngIf="!patientProfile" fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+  <span class="no-data hint-text">There are no Requests!</span>
+</div>
+
+<mat-card *ngIf="patientProfile" class='PPP--form__box--blue'>
+      <div class='PPP--form-container'>
+        <p class='PPP--form__header-title'>Patient Profile</p>
+        <div class='example-container'>
+          <div>
+            <strong>Reference No.:  </strong> <span>{{patientProfile.refCode}}</span>
+          </div>
+          <div>
+            <strong>Full Name:  </strong> <span>{{patientProfile.fullName}}</span>
+          </div>
+          <div>
+            <strong>Gender:  </strong> <span>{{patientProfile.gender}}</span>
+          </div>
+          <div>
+            <strong>Date of Birth:  </strong> <span>{{patientProfile.dateOfBirth}}</span>
+          </div>
+          <div>
+            <strong>Created By (email):  </strong> <span>{{patientProfile.createdBy.email}}</span>
+          </div>
+          <div>
+            <section class="checkbox-section">
+              <mat-checkbox class="checkbox-margin" disabled [checked]="patientProfile.smoking">Smoking</mat-checkbox>
+              <mat-checkbox class="checkbox-margin" disabled [checked]="patientProfile.diabetes">Diabetes</mat-checkbox>
+            </section>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+
+<table mat-table [dataSource]="patientRecords" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="complaints">
+    <th mat-header-cell *matHeaderCellDef> Complaints </th>
+    <td mat-cell *matCellDef="let element"> {{element.complaints}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="diagnosis">
+    <th mat-header-cell *matHeaderCellDef> Diagnosis </th>
+    <td mat-cell *matCellDef="let element"> {{element.diagnosis}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="actionToken">
+    <th mat-header-cell *matHeaderCellDef> Action Token </th>
+    <td mat-cell *matCellDef="let element"> {{element.actionToken}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="refCode">
+    <th mat-header-cell *matHeaderCellDef> Ref No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.refCode}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selectedRecord(row.id)"></tr>
+</table>
+
+
+<div *ngIf="selectedRecords">
+  <p class='PPP--form__header-title'>Patient Record</p>
+  <div class='example-container'>
+    <div>
+      <strong>Blood Pressure:  </strong> <span>{{selectedRecords.bloodPressure}}</span>
+    </div>
+    <div>
+      <strong>Comment:  </strong> <span>{{selectedRecords.comment}}</span>
+    </div>
+    <div>
+      <strong>Description:  </strong> <span>{{selectedRecords.description}}</span>
+    </div>
+    <div>
+      <strong>Height:  </strong> <span>{{selectedRecords.height}}</span>
+    </div>
+    <div>
+      <strong>Recommendation:  </strong> <span>{{selectedRecords.recommendation}}</span>
+    </div>
+    <div>
+      <strong>Sugar:  </strong> <span>{{selectedRecords.sugar}}</span>
+    </div>
+    <div>
+      <strong>Temperature:  </strong> <span>{{selectedRecords.temperature}}</span>
+    </div>
+    <div>
+      <strong>Weight:  </strong> <span>{{selectedRecords.weight}}</span>
+    </div>
+    <div>
+      <strong>Created By (Email):  </strong> <span>{{selectedRecords.createdBy.email}}</span>
+    </div>
+    <div>
+      <strong>Created At:  </strong> <span>{{selectedRecords.createdAt}}</span>
+    </div>
+  </div>
+</div>

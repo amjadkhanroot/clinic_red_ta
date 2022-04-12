@@ -1,0 +1,11 @@
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>
+<div>
+  <app-header></app-header>
+  <router-outlet *ngIf="isOnline;else isOffline"></router-outlet>
+  <ng-template #isOffline>
+    <div>
+      <p class="offline-error">Without connection we can not load anything!</p>
+    </div>
+  </ng-template>
+</div>
+<app-footer></app-footer>

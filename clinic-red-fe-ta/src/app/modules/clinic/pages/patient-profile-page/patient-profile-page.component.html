@@ -1,0 +1,15 @@
+<p>
+  <button class='' mat-raised-button color='primary'
+          (click)='goToCreateProfile()'>{{ "create new patient profile" | uppercase}}</button>
+</p>
+
+<div *ngIf="patientProfiles.length === 0" fxFlexFill fxLayout="column" fxLayoutAlign="center center">
+  <span class="no-data hint-text">There are no Requests!</span>
+</div>
+
+
+
+<mat-list>
+  <mat-list-item class="profile-list" (click)="selectedProfile(p.id)" *ngFor="let p of patientProfiles"> {{p.fullName}} | {{p.refCode}} </mat-list-item>
+</mat-list>
+

@@ -1,0 +1,50 @@
+
+    <mat-card class='signup--form__box--blue'>
+      <div class='signup--form-container'>
+        <p class='signup--form__header-title'>Give it a try!</p>
+        <form class='example-container' [formGroup]='signUpForm'>
+          <p>
+            <mat-form-field appearance='outline'>
+              <mat-label>Username</mat-label>
+              <input [formControl]='username' matInput placeholder='akhan'>
+              <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              <mat-hint>Must be letters only!</mat-hint>
+              <mat-error *ngIf='username.invalid'>{{getErrorMessage('username')}}</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance='outline'>
+              <mat-label>Enter your email</mat-label>
+              <input matInput placeholder='pat@example.com' [formControl]='email' required>
+              <mat-error *ngIf='email.invalid'>{{getErrorMessage('email')}}</mat-error>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance='outline'>
+              <mat-label>Enter a password</mat-label>
+              <input matInput [formControl]='password' [type]="hide ? 'password' : 'text'">
+              <button mat-icon-button matSuffix (click)='hide = !hide' [attr.aria-label]="'Hide password'" [attr.aria-pressed]='hide'>
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-hint>Must be minimum eight characters, at least one uppercase letter, one lowercase letter and one number</mat-hint>
+              <mat-error *ngIf='password.invalid'>{{getErrorMessage('password')}}</mat-error>
+            </mat-form-field>
+          </p>
+
+          <section class="checkbox-section">
+            <mat-radio-group (change)="onUserTypeChange($event)"   aria-label="Select an option">
+              <mat-radio-button class="checkbox-margin" checked value="DOCTOR">Doctor</mat-radio-button>
+              <mat-radio-button value="">Patient</mat-radio-button>
+            </mat-radio-group>
+          </section>
+
+
+
+          <p>
+            <button class='signup--form__submit-button' mat-raised-button color='primary'
+                    (click)='sendForm()'>{{ "Sign Up" | uppercase}}</button>
+          </p>
+        </form>
+      </div>
+    </mat-card>
+
