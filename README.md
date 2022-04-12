@@ -4,7 +4,7 @@
 
 ##How to run the app:
 
-- on root dir run `docker-compose up`* and you're ready to go!<br>
+- on root dir run `docker-compose up --build`* and you're ready to go!<br>
 - Frontend App running on port: `42002`<br>
 - Backend API running on port: `8080`<br>
 - Database on port: `3306`<br>
