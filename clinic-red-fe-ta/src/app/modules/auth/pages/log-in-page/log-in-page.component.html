@@ -6,7 +6,7 @@
         <form class='example-container' [formGroup]='logInForm' #loginForm="ngForm">
           <p>
             <mat-form-field appearance='outline'>
-              <mat-label>Enter your email</mat-label>
+              <mat-label>Enter your username</mat-label>
               <input matInput placeholder='akhan' [formControl]='username' required>
               <mat-error *ngIf='username.invalid'>{{getErrorMessage('username')}}</mat-error>
             </mat-form-field>
