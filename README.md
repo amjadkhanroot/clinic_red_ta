@@ -27,6 +27,8 @@
 - Display his/her profile if alreay created in the system by a doctor.<br>
 - Display his/her records in summary or full details.<br>
 
+###Postman Collection:
+`https://www.getpostman.com/collections/9ce74f0c92b81fd8e859`
 
     You can access the application on : `http://localhost:42002` 
     Thanks & regards 
